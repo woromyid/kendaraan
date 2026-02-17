@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Digitalproductlink.com</title>
+
+  <link rel="icon" href="https://app.lead.web.id/wp-content/uploads/2026/02/DPL-icon.png" />
+
+  <style>
+    :root{
+      --header-height: 52px;
+      --bg: #111;
+      --fg: #fff;
+    }
+
+    html, body{
+      margin:0;
+      padding:0;
+      width:100%;
+      height:100%;
+      background:#eee;
+      overflow:hidden; /* cegah scroll ganda */
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    /* HEADER (fixed, aman di semua device) */
+    .header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: var(--header-height);
+      background: var(--bg);
+      color: var(--fg);
+
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding-left: 16px;
+      padding-right: 16px;
+
+      /* Safe area iPhone (notch) */
+      padding-top: env(safe-area-inset-top);
+      height: calc(var(--header-height) + env(safe-area-inset-top));
+
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    }
+
+    .title{
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .2px;
+      margin-right: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 45vw;
+    }
+
+    .menu a{
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 13px;
+      opacity: .9;
+      padding: 6px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    .menu a:hover{ opacity:1; text-decoration: underline; }
+
+    /* Kalau layar kecil, rapihin menu biar nggak mepet */
+    .menu{
+      display:flex;
+      align-items:center;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .menu::-webkit-scrollbar{ display:none; }
+
+    /* IFRAME area: top/bottom fixed -> paling stabil lintas device */
+    .iframe-container{
+      position: fixed;
+      left: 0;
+      right: 0;
+
+      top: calc(var(--header-height) + env(safe-area-inset-top));
+      bottom: 0;
+
+      /* fallback tambahan kalau browser aneh soal viewport */
+      height: calc(100vh - (var(--header-height) + env(safe-area-inset-top)));
+      overflow: hidden;
+      background: #eee;
+    }
+
+    iframe{
+      display:block;
+      width:100%;
+      height:100%;
+      border:none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER MENU -->
+  <div class="header">
+    <div class="title">SPKOK</div>
+
+    <nav class="menu" aria-label="Menu Link">
+      <!-- GANTI LINK SESUAI KEBUTUHAN -->
+      <a href="https://script.google.com/macros/s/AKfycbz-ElUpdjWtS0Wk5KZyuYYPHdOnjeRG9Tucr39f2demUjAdHgiCE6MVfa5wwZ09u552/exec?page=dashboard" target="_blank" rel="noopener noreferrer">Dashboard</a>
+      <a href="https://digitalproductlink.com" target="_blank" rel="noopener noreferrer">Panduan</a>
+      <a href="https://digitalproductlink.com/kendaraan/" target="_blank" rel="noopener noreferrer">Kontak</a>
+    </nav>
+  </div>
+
+  <!-- APP -->
+  <div class="iframe-container">
+    <iframe
+      id="app"
+      src="https://script.google.com/macros/s/AKfycbz-ElUpdjWtS0Wk5KZyuYYPHdOnjeRG9Tucr39f2demUjAdHgiCE6MVfa5wwZ09u552/exec"
+      scrolling="yes"
+      allowfullscreen
+      allow="fullscreen; camera; microphone; display-capture; geolocation;">
+    </iframe>
+  </div>
+
+</body>
+</html>
